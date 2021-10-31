@@ -1,6 +1,8 @@
+using e_organic.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,6 +25,10 @@ namespace e_organic
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            //DbContext configuration
+            services.AddDbContext<ApplicationDbContext>(options=>options.UseSqlServer(
+                Configuration.GetConnectionString("DefaultConnectionStrings")));
             services.AddControllersWithViews();
         }
 
@@ -52,6 +58,9 @@ namespace e_organic
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            //seed data to database
+            AppDbInitializer.Seed(app); AppDbInitializer.Seed(app);
         }
     }
 }
