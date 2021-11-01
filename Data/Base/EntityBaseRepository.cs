@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -35,6 +36,13 @@ namespace e_organic.Data.Base
             var result = await _context.Set<T>().ToListAsync();
             return result;
 
+        }
+
+        public async Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, Object>>[] includeProperties)
+        {
+            IQueryable<T> query = _context.Set<T>();
+            query = includeProperties.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
+            return await query.ToListAsync();
         }
 
         public async Task<T> GetByIdAsync(int id)

@@ -8,7 +8,7 @@ using e_organic.Data.Base;
 
 namespace e_organic.Models
 {
-    public class Product
+    public class Product:IEntityBase
 
 
     {

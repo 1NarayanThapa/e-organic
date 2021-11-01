@@ -23,28 +23,28 @@ namespace e_organic.Data
                     {
                         new Vendor()
                         {
-                            name = "Cinema 1",
+                            name = "Vendor 1",
                             ImageUrl = "http://dotnethow.net/images/cinemas/cinema-1.jpeg",
                             Discription = "This is the description of the first cinema",
                             Address="kathamndu"
                         },
                         new Vendor()
                         {
-                            name = "Cinema 2",
+                            name = "Vendor 2",
                             ImageUrl = "http://dotnethow.net/images/cinemas/cinema-2.jpeg",
                             Discription = "This is the description of the first cinema",
                             Address="kathamndu"
                         },
                         new Vendor()
                         {
-                            name = "Cinema 3",
+                            name = "Vendor 3",
                             ImageUrl = "http://dotnethow.net/images/cinemas/cinema-3.jpeg",
                             Discription = "This is the description of the first cinema",
                             Address="kathamndu"
                         },
                         new Vendor()
                         {
-                            name = "Cinema 4",
+                            name = "Vendor 4",
                             ImageUrl = "http://dotnethow.net/images/cinemas/cinema-4.jpeg",
                             Discription = "This is the description of the first cinema",
                             Address="kathamndu"
@@ -52,7 +52,7 @@ namespace e_organic.Data
                         },
                         new Vendor()
                         {
-                            name = "Cinema 5",
+                            name = "Vendor 5",
                             ImageUrl = "http://dotnethow.net/images/cinemas/cinema-5.jpeg",
                             Discription = "This is the description of the first cinema",
                             Address="kathamndu"
