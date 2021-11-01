@@ -42,4 +42,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\NewFolder1\" />
+  </ItemGroup>
+
 </Project>
