@@ -14,7 +14,7 @@ namespace e_organic.Data
            
 
         }
-        public DbSet<Product> Products { get; set; }
+        public DbSet<NewProductVM> Products { get; set; }
 
         public DbSet<Vendor> Vendors { get; set; }
 

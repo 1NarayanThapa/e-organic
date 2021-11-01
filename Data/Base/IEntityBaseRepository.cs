@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace e_organic.Data.Base
@@ -9,6 +10,8 @@ namespace e_organic.Data.Base
     {
 
         Task<IEnumerable<T>> GetAllAsync();
+
+        Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T,object>>[]includeProperties);
         Task<T> GetByIdAsync(int id);
         Task AddAsync(T entity);
 

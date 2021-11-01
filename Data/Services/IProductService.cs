@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace e_organic.Data.Services
 {
-   public interface IProductService:IEntityBaseRepository<Product>
+   public interface IProductService:IEntityBaseRepository<NewProductVM>
     {
+        Task<NewProductVM> GetProductByIdAsync(int id);
+     
     }
 }
