@@ -1,21 +1,21 @@
 ﻿@model Vendor
 
 @{
-    ViewData["Title"] = "Add a new Vendor";
+    ViewData["Title"] = "Update Vendor";
 }
 
 <div class="row text">
     <div class="col-md-8 offset-2">
         <p>
-            <h1>Add a New Vendor</h1>
+            <h1>Update Vendor</h1>
         </p>
         <div class="row">
             <div class="col-md-8 offset-2">
-                <form asp-action="Create">
+                <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                     <div class="form-group text-center">
-                        <img id="VendorImagePreview" class="border-info rounded-circle" style="max-width: 150px" />
+                        <img id="VendorImagepreview" class="border-info rounded-circle" style="max-width: 150px" />
                     </div>
                     <div class="form-group">
                         <label asp-for="ImageUrl" class="control-label"></label>
@@ -27,20 +27,14 @@
                         <input asp-for="name" class="form-control" />
                         <span asp-validation-for="name" class="text-danger"></span>
                     </div>
-
                     <div class="form-group">
                         <label asp-for="Discription" class="control-label"></label>
                         <input asp-for="Discription" class="form-control" />
                         <span asp-validation-for="Discription" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="Address" class="control-label"></label>
-                        <input asp-for="Address" class="form-control" />
-                        <span asp-validation-for="Address" class="text-danger"></span>
-                    </div>
 
                     <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-outline-success float-right" />
+                        <input type="submit" value="Update" class="btn btn-outline-success float-right" />
                         <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
                     </div>
                 </form>
@@ -52,11 +46,11 @@
 @section Scripts{
     <script>
         $(document).ready(function () {
-            var output = document.getElementById('VendorImagePreview');
+            var output = document.getElementById('VendorImagepreview');
             output.src = $("#ImageUrl").val();
         })
         $("#ImageUrl").on("change", function () {
-            var output = document.getElementById('VendorImagePreview');
+            var output = document.getElementById('VendorImagepreview');
             output.src = $(this).val();
         })
     </script>
