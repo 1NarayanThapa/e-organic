@@ -1,6 +1,7 @@
 ﻿using e_organic.Data;
 using e_organic.Data.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,15 @@ namespace e_organic.Controllers
 
             var ProductDetail = await _service.GetProductByIdAsync(id);
             return View(ProductDetail);
+        }
+        public async Task<IActionResult> Create()
+        {
+
+            var VendorDropdowndata = await _service.GetNewProductDropdownValues();
+
+            ViewBag.Vendors = new SelectList(VendorDropdowndata.Vendors, "id", "name");
+            return View();
+
         }
     }
 }
