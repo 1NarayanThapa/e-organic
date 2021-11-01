@@ -9,8 +9,8 @@ using e_organic.Data;
 namespace e_organic.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211030054439_firstmigration")]
-    partial class firstmigration
+    [Migration("20211101054559_Addmodel")]
+    partial class Addmodel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,7 +22,7 @@ namespace e_organic.Migrations
 
             modelBuilder.Entity("e_organic.Models.Product", b =>
                 {
-                    b.Property<int>("ProductId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -45,7 +45,7 @@ namespace e_organic.Migrations
                     b.Property<int>("VendorId")
                         .HasColumnType("int");
 
-                    b.HasKey("ProductId");
+                    b.HasKey("Id");
 
                     b.HasIndex("VendorId");
 
@@ -54,24 +54,30 @@ namespace e_organic.Migrations
 
             modelBuilder.Entity("e_organic.Models.Vendor", b =>
                 {
-                    b.Property<int>("VendorId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Address")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
 
                     b.Property<string>("ImageUrl")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
-                    b.HasKey("VendorId");
+                    b.HasKey("Id");
 
                     b.ToTable("Vendors");
                 });

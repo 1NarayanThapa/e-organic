@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace e_organic.Data.Services
 {
-    public interface IVendorService:IEntityBaseRepository<Vendor>
+    public class ProductService:EntityBaseRepository<Product>, IProductService
     {
-     
+        public ProductService(ApplicationDbContext context):base(context) { }
+
     }
 }

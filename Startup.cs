@@ -32,6 +32,7 @@ namespace e_organic
                 Configuration.GetConnectionString("DefaultConnectionStrings")));
 
             services.AddScoped<IVendorService, VendorService>();
+            services.AddScoped<IProductService, ProductService>();
             services.AddControllersWithViews();
         }
 
@@ -63,7 +64,7 @@ namespace e_organic
             });
 
             //seed data to database
-            AppDbInitializer.Seed(app);
+           /* AppDbInitializer.Seed(app);*/
         }
     }
 }

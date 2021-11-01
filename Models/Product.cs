@@ -1,4 +1,5 @@
 ﻿using e_organic.Data;
+using e_organic.Data.Base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace e_organic.Models
 {
-    public class Product
+    public class Product:IEntityBase
     {
         [Key]
-       public int ProductId { get; set; }
+       public int Id { get; set; }
         [Display(Name = "Name")]
         public string Name { get; set; }
         [Display(Name = "Description")]

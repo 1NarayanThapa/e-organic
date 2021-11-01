@@ -9,7 +9,7 @@ namespace e_organic.Models
     public class ProductInfo
     {
         [Key]
-        public int ItemInfoId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string ItemOrigin { get; set; }
         public string ImageUrl { get; set; }

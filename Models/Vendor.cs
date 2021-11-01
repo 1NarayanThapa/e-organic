@@ -1,4 +1,5 @@
-﻿using System;
+﻿using e_organic.Data.Base;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace e_organic.Models
 {
-    public class Vendor
+    public class Vendor: IEntityBase
     {
 
         [Key]
         
-        public int VendorId { get; set; }
+        public int Id { get; set; }
         [Display(Name = "Name")]
         [Required(ErrorMessage="name is required")]
         [StringLength(20,MinimumLength =4,ErrorMessage ="name must be between 4 to 20 character")]

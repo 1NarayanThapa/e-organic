@@ -21,8 +21,8 @@ namespace e_organic.Controllers
         public async Task<IActionResult> Index()
         {
 
-            var vendorData = await _service.GetAllAsync();
-            return View(vendorData);
+            var result = await _service.GetAllAsync();
+            return View(result);
         }
 
         //method to create new vendor
@@ -53,7 +53,7 @@ namespace e_organic.Controllers
             return View(vendorDetails);
 
         }
-
+        //get edit
         public async Task<IActionResult> Edit(int id)
         {
             var vendorDetails = await _service.GetByIdAsync(id);
@@ -62,13 +62,31 @@ namespace e_organic.Controllers
         }
         //post method
         [HttpPost]
-        public async Task<IActionResult> Edit(int id,[Bind("VendorId,Name,ImageUrl,Description,Address")] Vendor newVendor)
-        {
-            if (!ModelState.IsValid)
+        public async Task<IActionResult> Edit(int id,[Bind("Id,Name,ImageUrl,Description,Address")] Vendor vendor)
             {
-                return View(newVendor);
-            }
-            await _service.UpdateAsync(id, newVendor);
+            if (!ModelState.IsValid) return View(vendor);
+                
+            await _service.UpdateAsync(id,vendor);
+            return RedirectToAction(nameof(Index));
+        }
+
+        //get delete
+        public async Task<IActionResult> Delete(int id)
+        {
+            var vendorDetails = await _service.GetByIdAsync(id);
+            if (vendorDetails == null) return View("NotFound");
+            return View(vendorDetails);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfiremd(int id)
+        {
+            var vendorDetails = await _service.GetByIdAsync(id);
+            if (vendorDetails == null) return View("NotFound");
+
+            await _service.DeleteAsync(id);
+
+           
             return RedirectToAction(nameof(Index));
         }
 
