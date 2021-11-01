@@ -1,4 +1,5 @@
 using e_organic.Data;
+using e_organic.Data.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,6 +30,8 @@ namespace e_organic
             //DbContext configuration
             services.AddDbContext<ApplicationDbContext>(options=>options.UseSqlServer(
                 Configuration.GetConnectionString("DefaultConnectionStrings")));
+
+            services.AddScoped<IVendorService, VendorService>();
             services.AddControllersWithViews();
         }
 
@@ -60,7 +63,7 @@ namespace e_organic
             });
 
             //seed data to database
-            AppDbInitializer.Seed(app); AppDbInitializer.Seed(app);
+            AppDbInitializer.Seed(app);
         }
     }
 }

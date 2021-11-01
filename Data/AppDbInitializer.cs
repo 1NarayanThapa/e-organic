@@ -59,7 +59,7 @@ namespace e_organic.Data
                             Description = "This is the description of the first cinema",
                             Address="kathamndu"
                         },
-                    }); ;
+                    });
                     context.SaveChanges();
                 }
                 //Product
@@ -76,7 +76,7 @@ namespace e_organic.Data
                             ImageUrl = "http://dotnethow.net/images/movies/movie-3.jpeg",
                             ProductCatagory=ProductCatagory.Dairy,
                             VendorId=1,
-                           
+
 
 
                         },
@@ -126,7 +126,7 @@ namespace e_organic.Data
                                ProductCatagory=ProductCatagory.Vegitables,
                             VendorId=3,
                         }
-                    }); ; ;
+                    });
                     context.SaveChanges();
 
                 }

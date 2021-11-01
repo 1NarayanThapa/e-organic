@@ -12,9 +12,13 @@ namespace e_organic.Models
     {
         [Key]
        public int ProductId { get; set; }
+        [Display(Name = "Name")]
         public string Name { get; set; }
+        [Display(Name = "Description")]
         public string Description { get; set; }
+        [Display(Name = "Product Image")]
         public string ImageUrl { get; set; }
+        [Display(Name = "Price")]
         public double Price { get; set; }
         public ProductCatagory ProductCatagory { get; set; }
 

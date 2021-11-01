@@ -1,5 +1,6 @@
 ﻿using e_organic.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +15,11 @@ namespace e_organic.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
 
-            var data = _context.Products.ToList();
-            return View();
+            var allProducts = await _context.Products.Include(n=>n.Vendor).OrderBy(n=>n.Name).ToListAsync();
+            return View(allProducts);
         }
     }
 }

@@ -1,0 +1,60 @@
+﻿@model Vendor
+
+@{ 
+    ViewData["Title"] = "Add new Vendor";
+}
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p> 
+                 <h1> Add new Vendor</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group text-center"><img class="img-thumbnail" id="ImageUrlPreview" /></div>
+                    <div class="form-group">
+                        <label asp-for="ImageUrl" class="control-label"></label>
+                        <input asp-for="ImageUrl" class="form-control">
+                        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <input asp-for="Description" class="form-control">
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Address" class="control-label"></label>
+                        <input asp-for="Address" class="form-control">
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-outline-success float-right" />
+                        <a class="btn btn-outline-secondary" asp-action="Index"> show All </a>
+                    </div>
+                </form>
+            
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{ 
+<script>
+    $(document).ready(function () {
+        var output = document.getElementById('ImageUrlPreview');
+        output.src = $("#ImageUrl").val();
+    })
+    $("#ImageUrl").on("change", function () {
+        var output = document.getElementById('ImageUrlPreview');
+        output.src = $(this).val();
+    })
+</script>
+}

@@ -12,14 +12,21 @@ namespace e_organic.Models
         [Key]
         
         public int VendorId { get; set; }
-        [Display(Name = "Vendor name")]
+        [Display(Name = "Name")]
+        [Required(ErrorMessage="name is required")]
+        [StringLength(20,MinimumLength =4,ErrorMessage ="name must be between 4 to 20 character")]
         public string Name { get; set; }
-        [Display(Name = "Vendor description")]
+
+        [StringLength(1000, MinimumLength = 10, ErrorMessage = "name must be between 1000 to 10 character")]
+        [Display(Name = "Description")]
+        [Required(ErrorMessage = "Description is required")]
         public string Description { get; set; }
 
-        [Display(Name = "Vendor picture url")]
+        [Display(Name = "Vendor Image")]
+        [Required(ErrorMessage = "image is required")]
         public string ImageUrl { get; set; }
-        [Display(Name = "Vendor address")]
+        [Display(Name = "Address")]
+        [Required(ErrorMessage = "address is required")]
         public string Address { get; set; }
 
         //Relationship
