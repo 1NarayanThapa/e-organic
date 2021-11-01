@@ -7,6 +7,6 @@ namespace e_organic.Data.Base
 {
      public interface IEntityBase
     {
-        int Id { get; set; }
+        int id { get; set; }
     }
 }

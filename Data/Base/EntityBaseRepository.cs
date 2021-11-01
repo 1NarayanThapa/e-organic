@@ -22,9 +22,9 @@ namespace e_organic.Data.Base
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(Int32 id)
+        public async Task DeleteAsync(int id)
         {
-            var entity = await _context.Set<T>().FirstOrDefaultAsync(n => n.Id == id);
+            var entity = await _context.Set<T>().FirstOrDefaultAsync(n => n.id == id);
             EntityEntry entityEntry = _context.Entry<T>(entity);
             entityEntry.State = EntityState.Deleted;
             await _context.SaveChangesAsync();
@@ -34,11 +34,12 @@ namespace e_organic.Data.Base
         {
             var result = await _context.Set<T>().ToListAsync();
             return result;
+
         }
 
-        public async Task<T> GetByIdAsync(Int32 id)
+        public async Task<T> GetByIdAsync(int id)
         {
-            var result = await _context.Set<T>().FirstOrDefaultAsync(n => n.Id == id);
+            var result = await _context.Set<T>().FirstOrDefaultAsync(n => n.id == id);
             return result;
         }
 

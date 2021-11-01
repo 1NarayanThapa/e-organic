@@ -1,5 +1,5 @@
 using e_organic.Data;
-
+using e_organic.Data.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -34,6 +34,7 @@ namespace e_organic
 
             services.AddControllersWithViews();
            /* services.AddScoped<IVendorsService, VendorsService>();*/
+           services.AddScoped<IVendorsService, VendorsService>(); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
