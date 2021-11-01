@@ -31,7 +31,7 @@ namespace e_organic.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("ImageUrl,name,Discription,Address")] Vendor vendor)
+        public async Task<IActionResult> Create([Bind("ImageUrl,name,Discription")] Vendor vendor)
         {
 
             if (!ModelState.IsValid) return View(vendor);

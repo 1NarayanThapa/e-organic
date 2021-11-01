@@ -13,13 +13,13 @@ namespace e_organic.Models
         public int id { get; set; }
 
         [Display(Name = "Profile Picture Url")]
-        [Required(ErrorMessage="profiel pictre required")]
-       
+      /*  [Required(ErrorMessage = "profiel pictre required")]*/
+
         public String ImageUrl { get; set; }
   
 
         [Display(Name = "Full Name")]
-        [Required(ErrorMessage = " vendor name  required")]
+   /*     [Required(ErrorMessage = " vendor name  required")]*/
         public String name { get; set; }
        
         [Display(Name = "Detail Descrition")]
@@ -28,7 +28,7 @@ namespace e_organic.Models
       
 
         [Display(Name = "correct Address")]
-        [Required(ErrorMessage = "vendor address required")]
+    /*    [Required(ErrorMessage = "vendor address required")]*/
         public String Address { get; set; }
 
         public List<Product> Products { get; set; }
