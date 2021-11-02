@@ -66,9 +66,9 @@ namespace e_organic.Data
                 if (!context.Products.Any())
                 {
 
-                    context.Products.AddRange(new List<NewProductVM>()
+                    context.Products.AddRange(new List<Product>()
                     {
-                        new NewProductVM()
+                        new Product()
                         {
                             Name = "Life",
                             Description = "This is the Life movie description",
@@ -80,7 +80,7 @@ namespace e_organic.Data
 
 
                         },
-                        new NewProductVM()
+                        new Product()
                         {
                             Name = "The Shawshank Redemption",
                             Description = "This is the Shawshank Redemption description",
@@ -89,7 +89,7 @@ namespace e_organic.Data
                             ProductCatagory=ProductCatagory.Dairy,
                             VendorId=2,
                         },
-                        new NewProductVM()
+                        new Product()
                         {
                             Name = "Ghost",
                             Description = "This is the Ghost movie description",
@@ -99,7 +99,7 @@ namespace e_organic.Data
                              ProductCatagory=ProductCatagory.Dairy,
                             VendorId=3,
                         },
-                        new NewProductVM()
+                        new Product()
                         {
                             Name = "Race",
                             Description = "This is the Race movie description",
@@ -108,7 +108,7 @@ namespace e_organic.Data
                               ProductCatagory=ProductCatagory.DryFood,
                             VendorId=3,
                         },
-                        new NewProductVM()
+                        new Product()
                         {
                             Name = "Scoob",
                             Description = "This is the Scoob movie description",
@@ -117,7 +117,7 @@ namespace e_organic.Data
                               ProductCatagory=ProductCatagory.Fruits,
                             VendorId=3,
                         },
-                        new NewProductVM()
+                        new Product()
                         {
                             Name = "Cold Soles",
                             Description = "This is the Cold Soles movie description",

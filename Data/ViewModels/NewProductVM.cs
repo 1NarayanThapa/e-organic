@@ -5,6 +5,9 @@ namespace e_organic.Data.ViewModels
 {
     public class NewProductVM
     {
+      
+        public int Id { get; set; }
+
         [Required(ErrorMessage ="name is required")]
         [Display(Name = "Name")]
         public string Name { get; set; }

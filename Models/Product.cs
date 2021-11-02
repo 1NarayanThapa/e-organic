@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 
 namespace e_organic.Models
 {
-    public class NewProductVM:IEntityBase
+    public class Product
+        :IEntityBase
     {
         [Key]
        public int Id { get; set; }

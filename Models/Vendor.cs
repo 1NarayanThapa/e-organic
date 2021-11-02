@@ -31,7 +31,7 @@ namespace e_organic.Models
         public string Address { get; set; }
 
         //Relationship
-        public List<NewProductVM> Products { get; set; }
+        public List<Product> Products { get; set; }
         
     }
 }
