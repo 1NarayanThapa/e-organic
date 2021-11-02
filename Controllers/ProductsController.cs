@@ -1,5 +1,6 @@
 ﻿using e_organic.Data;
 using e_organic.Data.Services;
+using e_organic.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -40,6 +41,21 @@ namespace e_organic.Controllers
             ViewBag.Vendors = new SelectList(VendorDropdowndata.Vendors, "id", "name");
             return View();
 
+        }
+        //adding product data to the database
+        [HttpPost]
+        public async Task<IActionResult> Create(NewProductVM product)
+        {
+            if (!ModelState.IsValid) {
+
+                var VendorDropdowndata = await _service.GetNewProductDropdownValues();
+
+
+                ViewBag.Vendors = new SelectList(VendorDropdowndata.Vendors, "id", "name");
+                return View(product);
+            }
+            await _service.addNewProductAsync(product);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

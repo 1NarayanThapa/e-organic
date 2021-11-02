@@ -35,6 +35,21 @@ namespace e_organic.Data.Services
             };
             return response;
         }
+
+        public async Task addNewProductAsync(NewProductVM data)
+        {
+            var newProduct = new Product() {
+                name = data.name,
+                Discription = data.Discription,
+                imageUrl = data.imageUrl,
+                VendorId = data.VendorId,
+                ProductCategory = data.ProductCategory
+
+
+            };
+            await _context.Products.AddAsync(newProduct);
+            await _context.SaveChangesAsync();
+        }
     }
 }
 
