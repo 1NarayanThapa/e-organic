@@ -24,7 +24,18 @@ namespace e_organic.Controllers
             var allProducts = await _service.GetAllAsync(n =>n.Vendor);
             return View(allProducts);
         }
-
+        //search method
+        public async Task<IActionResult> Filter(string searchString)
+        {
+            var allProducts = await _service.GetAllAsync(n => n.Vendor);
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                var filteredResult = allProducts.Where(n => n.Name.Contains(searchString) || n.Description.Contains(searchString)).ToList();
+                return View("Index", filteredResult);
+            }
+       
+            return View("Index", allProducts);
+        }
         //Get: movies/detail/1
         public async Task<IActionResult> Details(int id)
         {
