@@ -6,13 +6,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using e_organic.Data.Base;
 
-namespace e_organic.Models
+namespace e_organic.Data.ViewModels
 {
     public class NewProductVM
 
 
     {
-        
+        public int id { get; set; }
+
         [Display(Name  = "name of the Product")]
         [Required(ErrorMessage ="name required")]
         public String name { get; set; }
@@ -31,7 +32,7 @@ namespace e_organic.Models
 
         //vendor
 
-        public List<int> VendorIds { get; set; }
+     
         [Display(Name = "select a Vendor")]
         [Required(ErrorMessage = "you must choose Vendor")]
         public int VendorId { get; set; }

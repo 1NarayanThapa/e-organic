@@ -12,7 +12,8 @@ namespace e_organic.Data.Services
     {
         Task<Product> GetProductByIdAsync(int id);
         Task<NewProductDropdownsVM> GetNewProductDropdownValues();
-        Task addNewProductAsync(NewProductVM data); 
+        Task addNewProductAsync(NewProductVM data);
+        Task UpdateProductAsync(NewProductVM data);
 
     }
 }

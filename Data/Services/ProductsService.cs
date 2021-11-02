@@ -43,13 +43,37 @@ namespace e_organic.Data.Services
                 Discription = data.Discription,
                 imageUrl = data.imageUrl,
                 VendorId = data.VendorId,
-                ProductCategory = data.ProductCategory
+                ProductCategory = data.ProductCategory,
+                price=data.price,
 
 
             };
             await _context.Products.AddAsync(newProduct);
             await _context.SaveChangesAsync();
         }
+
+        public async Task UpdateProductAsync(NewProductVM data)
+        {
+
+            var dbProduct = await _context.Products.FirstOrDefaultAsync(n => n.id == data.id);
+            if (dbProduct != null) {
+
+                dbProduct.name = data.name;
+                    dbProduct.Discription = data.Discription;
+                dbProduct.imageUrl = data.imageUrl;
+                dbProduct.VendorId = data.VendorId;
+                dbProduct.ProductCategory = data.ProductCategory;
+                dbProduct.price = data.price;
+              
+             await _context.SaveChangesAsync();
+
+
+            };
+                
+
+            }
+           
+        }
     }
-}
+
 
