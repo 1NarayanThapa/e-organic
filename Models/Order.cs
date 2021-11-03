@@ -10,7 +10,7 @@ namespace e_organic.Models
     {
         [Key]
         public int id { get; set; }
-        public String email { get; set; }
+        public String Email { get; set; }
         public String UserId { get; set; }
 
         public List<OrderItem> OrderItems { get; set; }

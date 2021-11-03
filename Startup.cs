@@ -40,7 +40,9 @@ namespace e_organic
             services.AddScoped<IProductsService, ProductsService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(sc=>ShoppingCart.GetShoppingCart(sc));
+
             services.AddSession();
+            services.AddScoped<IOrdersService, OrdersService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

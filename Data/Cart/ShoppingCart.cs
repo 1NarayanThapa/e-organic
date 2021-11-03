@@ -74,6 +74,12 @@ namespace e_organic.Data.Cart
             var total = _context.shoppingCartItems.Where(n => n.ShoppingCartId == ShoppingCartId).Select(n => n.Product.price * n.Amount).Sum();
             return total;
         }
+        public async Task ClearShoppingCartAsync()
+        {
+            var items = await _context.shoppingCartItems.Where(n => n.ShoppingCartId == ShoppingCartId).ToListAsync();
+            _context.shoppingCartItems.RemoveRange(items);
+            await _context.SaveChangesAsync();
+        }
 
     }
 }
