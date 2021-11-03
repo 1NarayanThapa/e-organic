@@ -21,6 +21,13 @@ namespace e_organic.Data
              
         public DbSet<Vendor> Vendors { get; set; }
         public DbSet<Product> Products { get; set; }
+
+        //Orderes Related Tables
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+
+        public DbSet<ShoppingCartItem> shoppingCartItems { get; set; }
+
     }
     
 }

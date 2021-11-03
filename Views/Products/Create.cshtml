@@ -1,6 +1,7 @@
-﻿@model NewProductVM
-@using e_organic.Data;
- 
+﻿
+@using e_organic.Data.ViewModels;
+@model NewProductVM
+
 @{
     ViewData["Title"] = "Create a new Vendor";
 }
@@ -23,16 +24,16 @@
                                 <input asp-for="name" class="form-control" />
                                 <span asp-validation-for="name" class="text-danger"></span>
                             </div>
-                           @* <div class="form-group">
-                                <label asp-for="StartDate" class="control-label"></label>
-                                <input asp-for="StartDate" type="date" class="form-control" />
-                                <span asp-validation-for="StartDate" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="EndDate" class="control-label"></label>
-                                <input asp-for="EndDate" type="date" class="form-control" />
-                                <span asp-validation-for="EndDate" class="text-danger"></span>
-                            </div>*@
+                            @* <div class="form-group">
+                                    <label asp-for="StartDate" class="control-label"></label>
+                                    <input asp-for="StartDate" type="date" class="form-control" />
+                                    <span asp-validation-for="StartDate" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="EndDate" class="control-label"></label>
+                                    <input asp-for="EndDate" type="date" class="form-control" />
+                                    <span asp-validation-for="EndDate" class="text-danger"></span>
+                                </div>*@
                             <div class="form-group">
                                 <label asp-for="price" class="control-label"></label>
                                 <input asp-for="price" type="number" class="form-control" />
@@ -55,16 +56,16 @@
                                 <select asp-for="ProductCategory" class="form-control" asp-items="Html.GetEnumSelectList<ProductCategory>()"></select>
                                 <span asp-validation-for="ProductCategory" class="text-danger"></span>
                             </div>
-                           @* <div class="form-group">
-                                <label asp-for="ProducerId" class="control-label"></label>
-                                <select asp-for="ProducerId" class="form-control" asp-items="ViewBag.Producers"></select>
-                                <span asp-validation-for="ProducerId" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="ActorIds" class="control-label"></label>
-                                <select asp-for="ActorIds" class="form-control" asp-items="ViewBag.Actors" multiple></select>
-                                <span asp-validation-for="ActorIds" class="text-danger"></span>
-                            </div>*@
+                            @* <div class="form-group">
+                                    <label asp-for="ProducerId" class="control-label"></label>
+                                    <select asp-for="ProducerId" class="form-control" asp-items="ViewBag.Producers"></select>
+                                    <span asp-validation-for="ProducerId" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="ActorIds" class="control-label"></label>
+                                    <select asp-for="ActorIds" class="form-control" asp-items="ViewBag.Actors" multiple></select>
+                                    <span asp-validation-for="ActorIds" class="text-danger"></span>
+                                </div>*@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
@@ -76,7 +77,7 @@
                     </div>
 
                     <div class="col-md-4 offset-4 text-center">
-                        <img width="100%" id="imageUrlPreview" /> 
+                        <img width="100%" id="imageUrlPreview" />
                     </div>
 
                     <div class="form-group">

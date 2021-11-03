@@ -1,7 +1,9 @@
 using e_organic.Data;
+using e_organic.Data.Cart;
 using e_organic.Data.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -36,6 +38,9 @@ namespace e_organic
            /* services.AddScoped<IVendorsService, VendorsService>();*/
            services.AddScoped<IVendorsService, VendorsService>();
             services.AddScoped<IProductsService, ProductsService>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(sc=>ShoppingCart.GetShoppingCart(sc));
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +60,7 @@ namespace e_organic
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
 
             app.UseAuthorization();
 

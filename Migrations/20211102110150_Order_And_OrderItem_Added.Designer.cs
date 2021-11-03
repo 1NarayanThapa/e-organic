@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using e_organic.Data;
 
 namespace e_organic.Migrations
 {
     [DbContext(typeof(AddDbContext))]
-    partial class AddDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211102110150_Order_And_OrderItem_Added")]
+    partial class Order_And_OrderItem_Added
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -100,29 +102,6 @@ namespace e_organic.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("e_organic.Models.ShoppingCartItem", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("Amount")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Productid")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ShoppingCartId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("Productid");
-
-                    b.ToTable("shoppingCartItems");
-                });
-
             modelBuilder.Entity("e_organic.Models.Vendor", b =>
                 {
                     b.Property<int>("id")
@@ -176,15 +155,6 @@ namespace e_organic.Migrations
                         .IsRequired();
 
                     b.Navigation("Vendor");
-                });
-
-            modelBuilder.Entity("e_organic.Models.ShoppingCartItem", b =>
-                {
-                    b.HasOne("e_organic.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("Productid");
-
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("e_organic.Models.Order", b =>

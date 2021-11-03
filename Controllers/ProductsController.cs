@@ -37,7 +37,7 @@ namespace e_organic.Controllers
                 return View("Index", filteredResult);
             }
 
-            return View("Index", allProduct);
+            return View("Index", allProduct); 
         }
         //GEt:Product/Details/1
         public async Task<IActionResult>Details(int id)
