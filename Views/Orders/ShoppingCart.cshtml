@@ -57,9 +57,9 @@
 
         <div class="text-right">
             <div class="btn-group">
-                <a class="btn btn-outline-primary" asp-action="CompleteOrder">
+             @*   <a class="btn btn-outline-primary" asp-action="CompleteOrder">
                         Complete order
-                    </a>
+                    </a>*@
                 <div id="paypal-btn"></div>
                 <span style="padding:5px"></span>
                 <a class="btn btn-outline-success" asp-controller="Products" asp-action="Index">
@@ -81,7 +81,7 @@
             //Configure environment
             env: 'sandbox',
             client: {
-                sandbox: 'AcKRtgL4i68EZ2ZYuYUx3ilihAg2YhL5dtF_m19A8MjBWVOn6ewNS4M_uV8gA3xi98zTcUq38gUHbVFx'
+                sandbox: 'AfjZ1AEHPmKDgu8Hje2Zn1BaGVPJT96JxbJBPXXJftTgF_hXvBhvjpK3m7R0VbGOjhNcjAGcfc4opkD2'
             },
             //Customize button
             locale: 'en_US',
