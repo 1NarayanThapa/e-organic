@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace e_organic.Data.ViewModels
 {
-    public class LoginVm
+    public class RegisterVm
     {
+        [Display(Name = "full name")]
+        [Required(ErrorMessage = "Full Name is required")]
+         public string FullName { get; set; }
         [Display(Name = "Email Address")]
         [Required(ErrorMessage ="Email Address is required")]
         
@@ -16,5 +19,10 @@ namespace e_organic.Data.ViewModels
         [Required]
         [DataType(DataType.Password)]
         public String Password  { get; set; }
+        [Display(Name ="confirm Password")]
+        [Required(ErrorMessage ="Confirm password is required")]
+        [DataType(DataType.Password)]
+        [Compare("Password",ErrorMessage ="password do not match")]
+        public String ConfirmPassword { get; set; }
     }
 }

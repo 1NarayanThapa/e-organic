@@ -15,9 +15,12 @@ namespace e_organic.Data.Services
         {
             _context = context;
         }
-        public async Task<List<Order>> GetOrdersByUserIdAsync(String userId)
+        public async Task<List<Order>> GetOrdersByUserIdAndRoleAsync(String userId,String userRole)
         {
-            var orders = await _context.Orders.Include(n => n.OrderItems).ThenInclude(n => n.Product).Where(n => n.UserId == userId).ToListAsync();
+            var orders = await _context.Orders.Include(n => n.OrderItems).ThenInclude(n => n.Product).Include(n=>n.User).ToListAsync();
+            if(userRole != "Admin") {
+                orders = orders.Where(n => n.UserId == userId).ToList();
+            }
             return orders;
         }
 
