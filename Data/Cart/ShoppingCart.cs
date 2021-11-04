@@ -11,21 +11,21 @@ namespace e_organic.Data.Cart
 {
     public class ShoppingCart
     {
-        public AddDbContext _context { get; set; }
+        public AppDbContext _context { get; set; }
 
 
 
         public String ShoppingCartId { get; set; }
         public List<ShoppingCartItem> shoppingCartItems { get; set; }
 
-        public ShoppingCart(AddDbContext context)
+        public ShoppingCart(AppDbContext context)
         {
             _context = context;
         }
         public static ShoppingCart GetShoppingCart(IServiceProvider services)
         {
             ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
-            var context = services.GetService<AddDbContext>();
+            var context = services.GetService<AppDbContext>();
 
             string cartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
             session.SetString("CartId", cartId);

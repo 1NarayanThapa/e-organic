@@ -10,8 +10,8 @@ namespace e_organic.Data.Base
 {
     public class EntityBaseRepository<T> : IEntityBaseReposistory<T> where T : class, IEntityBase, new()
     {
-        public readonly AddDbContext _context;
-        public EntityBaseRepository(AddDbContext context)
+        public readonly AppDbContext _context;
+        public EntityBaseRepository(AppDbContext context)
         {
             _context = context;
 

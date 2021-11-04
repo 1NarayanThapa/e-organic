@@ -9,7 +9,7 @@ namespace e_organic.Data.Services
 {
     public class VendorsService:EntityBaseRepository<Vendor>,IVendorsService
     {
-        public VendorsService(AddDbContext context):base(context)
+        public VendorsService(AppDbContext context):base(context)
         {
 
         }

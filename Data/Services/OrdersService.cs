@@ -9,8 +9,8 @@ namespace e_organic.Data.Services
 {
     public class OrdersService : IOrdersService
     {
-        private readonly AddDbContext _context;
-        public OrdersService(AddDbContext context)
+        private readonly AppDbContext _context;
+        public OrdersService(AppDbContext context)
 
         {
             _context = context;

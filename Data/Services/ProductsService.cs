@@ -11,8 +11,8 @@ namespace e_organic.Data.Services
 {
     public class ProductsService : EntityBaseRepository<Product>, IProductsService
     {
-        private readonly AddDbContext _context;
-        public ProductsService(AddDbContext context) : base(context)
+        private readonly AppDbContext _context;
+        public ProductsService(AppDbContext context) : base(context)
         {
 
             _context = context;

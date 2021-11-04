@@ -1,10 +1,13 @@
 using e_organic.Data;
 using e_organic.Data.Cart;
 using e_organic.Data.Services;
+using e_organic.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,19 +31,30 @@ namespace e_organic
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
 
-            //configure services
+        //configure services
 
-        
+
         {
-            services.AddDbContext<AddDbContext>(options=>options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
 
-            services.AddControllersWithViews();
-           /* services.AddScoped<IVendorsService, VendorsService>();*/
-           services.AddScoped<IVendorsService, VendorsService>();
+
+            /* services.AddScoped<IVendorsService, VendorsService>();*/
+            services.AddScoped<IVendorsService, VendorsService>();
             services.AddScoped<IProductsService, ProductsService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddScoped(sc=>ShoppingCart.GetShoppingCart(sc));
+            services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc));
 
+            //authendication and authorization
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+            services.AddMemoryCache();
+            services.AddSession();
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+
+        });
+
+        services.AddControllersWithViews(); 
             services.AddSession();
             services.AddScoped<IOrdersService, OrdersService>();
         }
@@ -63,6 +77,9 @@ namespace e_organic
 
             app.UseRouting();
             app.UseSession();
+            //Authentication adn Authorization
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseAuthorization();
 
@@ -75,6 +92,7 @@ namespace e_organic
 
             //seed Database
             AppDbInitializer.Seed(app);
+            AppDbInitializer.SeedUsersandRolesAsync(app).Wait();
 
         }
     }

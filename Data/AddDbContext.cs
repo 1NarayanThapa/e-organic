@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using e_organic.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace e_organic.Data
 {
-    public class AddDbContext:DbContext
+    public class AppDbContext:IdentityDbContext<ApplicationUser>
 
     {
-        public AddDbContext(DbContextOptions<AddDbContext> options):base(options)
+        public AppDbContext(DbContextOptions<AppDbContext> options):base(options)
         {
         }
        /* protected override void OnModelCreating(ModelBuilder modelBuilder)

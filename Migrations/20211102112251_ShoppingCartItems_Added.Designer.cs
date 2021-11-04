@@ -9,7 +9,7 @@ using e_organic.Data;
 
 namespace e_organic.Migrations
 {
-    [DbContext(typeof(AddDbContext))]
+    [DbContext(typeof(AppDbContext))]
     [Migration("20211102112251_ShoppingCartItems_Added")]
     partial class ShoppingCartItems_Added
     {

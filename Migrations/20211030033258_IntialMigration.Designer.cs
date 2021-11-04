@@ -8,7 +8,7 @@ using e_organic.Data;
 
 namespace e_organic.Migrations
 {
-    [DbContext(typeof(AddDbContext))]
+    [DbContext(typeof(AppDbContext))]
     [Migration("20211030033258_IntialMigration")]
     partial class IntialMigration
     {
