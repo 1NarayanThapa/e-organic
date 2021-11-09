@@ -1,8 +1,13 @@
 using e_organic.Data;
+using e_organic.Data.Cart;
 using e_organic.Data.Services;
+using e_organic.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,9 +36,29 @@ namespace e_organic
             services.AddDbContext<ApplicationDbContext>(options=>options.UseSqlServer(
                 Configuration.GetConnectionString("DefaultConnectionStrings")));
 
+            //services configuration
             services.AddScoped<IVendorService, VendorService>();
             services.AddScoped<IProductService, ProductService>();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(sc=>ShoppingCart.GetShoppingCart(sc));
+            services.AddScoped<IOrdersService, OrdersService>();
+
+            //authendication and authorization
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddMemoryCache();
+            services.AddSession();
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+
+            });
+
+           
+
+            
             services.AddControllersWithViews();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +79,10 @@ namespace e_organic
 
             app.UseRouting();
 
+            app.UseSession();
+            //authentication and authorization
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -64,7 +93,9 @@ namespace e_organic
             });
 
             //seed data to database
-           /* AppDbInitializer.Seed(app);*/
+            AppDbInitializer.Seed(app);
+            AppDbInitializer.SeedUsersandRolesAsync(app).Wait();
+
         }
     }
 }

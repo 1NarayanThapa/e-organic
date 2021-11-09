@@ -15,7 +15,10 @@
                             <p class="card-text">
                                 <h5 class="card-title">
                                     @item.Name
-                                    <a class="text-white float-right"  asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square" ></i></a>
+                                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                    {
+                                        <a class="text-white float-right" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
+                                    }
                                 </h5>
                             </p>
                         </div>
@@ -29,8 +32,8 @@
                             <p class="card-text"><b>Vendor:</b>@item.Vendor.Name</p>
                             <p class="card-text"><b>Category: </b>@item.ProductCatagory</p>
                             <p class="card-text"><b>Price: </b>@item.Price</p>
-                           
-                         
+
+
 
                         </div>
                     </div>
@@ -40,8 +43,9 @@
                                 <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.Id">
                                     <i class="bi bi-eye-fill"></i> Show Details
                                 </a>
-                                <a class="btn btn-success text-white" >
-                                <i class="bi bi-cart-plus"></i> Add to Cart (Price @item.Price.ToString("c"))</a>
+                                <a class="btn btn-success text-white" asp-controller="Orders" asp-action="AddItemToShoppinCart" asp-route-id="@item.Id">
+                                    <i class="bi bi-cart-plus"></i> Add to Cart (Price @item.Price.ToString("c"))
+                                </a>
                             </p>
                         </div>
                     </div>
@@ -50,5 +54,6 @@
         </div>
     }
 </div>
-
 @await Html.PartialAsync("_CreateItem", "Product")
+
+
