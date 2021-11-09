@@ -142,7 +142,7 @@ namespace e_organic.Data
                     await roleManager.CreateAsync(new IdentityRole(UserRoles.User));
                 //usesrs
                 var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-                String adminUserEmail = "admin@eorganic.com";
+                string adminUserEmail = "admin@eorganic.com";
                 var adminUser = await userManager.FindByEmailAsync(adminUserEmail);
                 if (adminUser == null) {
                     var newAdminUser = new ApplicationUser() {
@@ -156,7 +156,7 @@ namespace e_organic.Data
                 }
 
                 //usesrs
-                String appUserEmail = "user@eorganic.com";
+                string appUserEmail = "user@eorganic.com";
                 var appUser = await userManager.FindByEmailAsync(appUserEmail);
                 if (appUser == null) {
                     var newAppUser = new ApplicationUser() {
@@ -165,6 +165,7 @@ namespace e_organic.Data
                         UserName = "app-user",
                         Email = appUserEmail,
                         EmailConfirmed = true
+                        
                     };
                     await userManager.CreateAsync(newAppUser, "Coding@1234?");
                     await userManager.AddToRoleAsync(newAppUser, UserRoles.User);

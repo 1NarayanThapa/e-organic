@@ -41,15 +41,16 @@ namespace e_organic.Controllers
                 var passwordCheck = await _userManager.CheckPasswordAsync(user, loginVm.Password);
                 if (passwordCheck) {
                     var result = await _signInManager.PasswordSignInAsync(user, loginVm.Password, false, false);
-                    if (result.Succeeded) {
+                    if (result.Succeeded) 
+                        {
                         return RedirectToAction("Index", "Products");
                     }
                 }  
-                TempData["Error"] = "Wrong Cerdintials. please Try Again";
+                TempData["Error"] = "Wrong Cerdintials. please Try Again1";
                 return View(loginVm);
 
             }
-            TempData["Error"] = "Wrong Cerdintials. please Try Again";
+            TempData["Error"] = "Wrong Cerdintials. please Try Againsa";
             return View(loginVm);
         }
         public IActionResult Register () => View(new RegisterVm());
@@ -67,13 +68,20 @@ namespace e_organic.Controllers
             var newUser = new ApplicationUser() {
                 FullName = registerVm.FullName,
                 Email = registerVm.EmailAddress,
-                UserName = registerVm.EmailAddress
+                UserName = registerVm.EmailAddress,
+
+
             };
             var newUserResponse = await _userManager.CreateAsync(newUser, registerVm.Password);
-            if (newUserResponse.Succeeded) 
+            if (newUserResponse.Succeeded) {
                 await _userManager.AddToRoleAsync(newUser, UserRoles.User);
 
-            return View("RegisterCompleted");
+                return View("RegisterCompleted");
+            }
+
+            TempData["Error"] = "passport not strong";
+            return View(registerVm);
+
 
         }
         [HttpPost]
